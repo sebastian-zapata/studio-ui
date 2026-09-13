@@ -416,6 +416,47 @@
         !important;
 }
 
+/* Reserve space for the standard focused editor actions. */
+.monaco-workbench.modern-ui.floating-panels
+.part.editor:has(.tabs-container):not(:has(.two-tab-bars))
+.editor-group-container > .title
+> .tabs-and-actions-container.wrapping
+> .editor-actions {
+    box-sizing: border-box;
+    display: flex !important;
+    justify-content: flex-end;
+    min-width: 56px !important;
+}
+
+/* Match outer-right actions to the neighboring panel spacing. */
+.monaco-workbench.modern-ui.floating-panels
+.part.editor:has(.tabs-container):not(:has(.two-tab-bars))
+.monaco-grid-branch-node
+> .monaco-split-view2.horizontal
+> .monaco-scrollable-element
+> .split-view-container
+> .split-view-view:last-child
+.editor-group-container > .title
+> .tabs-and-actions-container
+> .editor-actions,
+.monaco-workbench.modern-ui.floating-panels
+.part.editor:has(.tabs-container):not(:has(.two-tab-bars)):not(
+    :has(.monaco-split-view2.horizontal)
+)
+.editor-group-container > .title
+> .tabs-and-actions-container
+> .editor-actions {
+    padding-right:
+        max(
+            var(--vs-zero),
+            calc(
+                var(--vscode-spacing-size40) -
+                var(--vs-editor-group-half-gap)
+            )
+        )
+        !important;
+}
+
 /* Center action buttons within a single visual tab row. */
 .monaco-workbench.modern-ui.floating-panels
 .part.editor:has(.tabs-container):not(:has(.two-tab-bars))
