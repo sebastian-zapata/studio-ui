@@ -416,25 +416,6 @@
         !important;
 }
 
-/* Prevent Split from forcing a nearly fitting tab onto another row. */
-.monaco-workbench.modern-ui.floating-panels
-.part.editor:has(.tabs-container):not(:has(.two-tab-bars))
-.editor-group-container > .title
-> .tabs-and-actions-container.wrapping
-> .editor-actions:has(.action-item + .action-item) {
-    padding-left: var(--vscode-spacing-size20) !important;
-}
-
-/* Reserve exactly the action width after the final wrapped tab. */
-.monaco-workbench.modern-ui.floating-panels
-.part.editor:has(.tabs-container):not(:has(.two-tab-bars))
-.editor-group-container > .title
-> .tabs-and-actions-container.wrapping
-.tabs-container > .tab:not(:has(~ .tab)) {
-    margin-right:
-        var(--last-tab-margin-right) !important;
-}
-
 /* Center action buttons within a single visual tab row. */
 .monaco-workbench.modern-ui.floating-panels
 .part.editor:has(.tabs-container):not(:has(.two-tab-bars))
