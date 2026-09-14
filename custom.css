@@ -798,19 +798,27 @@
         var(--vs-editor-stack-offset);
 }
 
-/* Keep nested bottom-row frames inside their clipping edge. */
+/* Allow nested bottom-row frames to reach the outer editor edge. */
 .monaco-workbench.modern-ui.floating-panels
 .part.editor .monaco-grid-branch-node
 > .monaco-split-view2.vertical
 > .monaco-scrollable-element
 > .split-view-container
 > .split-view-view:last-child:not(:first-child)
-> .monaco-grid-branch-node {
-    --vs-editor-frame-bottom-inset:
-        calc(
-            var(--vs-editor-frame-reservation) +
-            var(--vs-editor-stack-offset)
-        );
+> .monaco-grid-branch-node
+.monaco-split-view2
+> .monaco-scrollable-element,
+.monaco-workbench.modern-ui.floating-panels
+.part.editor .monaco-grid-branch-node
+> .monaco-split-view2.vertical
+> .monaco-scrollable-element
+> .split-view-container
+> .split-view-view:last-child:not(:first-child)
+> .monaco-grid-branch-node
+.monaco-split-view2
+> .monaco-scrollable-element
+> .split-view-container {
+    overflow: visible !important;
 }
 
 .monaco-workbench.modern-ui.floating-panels
@@ -836,6 +844,26 @@
 .editor-group-container {
     position: relative;
     top: var(--vs-editor-stack-offset);
+}
+
+/* Preserve the gap when another editor row exists below. */
+.monaco-workbench.modern-ui.floating-panels
+.part.editor .monaco-grid-branch-node
+> .monaco-split-view2.vertical
+> .monaco-scrollable-element
+> .split-view-container
+> .split-view-view:not(:last-child)
+.monaco-split-view2.horizontal
+.monaco-split-view2.vertical
+> .monaco-scrollable-element
+> .split-view-container
+> .split-view-view:last-child:not(:first-child) {
+    --vs-editor-frame-bottom-inset:
+        calc(
+            var(--vs-editor-frame-reservation) +
+            var(--vs-editor-group-half-gap) +
+            var(--vs-editor-stack-offset)
+        );
 }
 
 /* Keep horizontal scrollbars inside vertically inset frames. */
