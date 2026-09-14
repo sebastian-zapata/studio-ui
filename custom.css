@@ -798,6 +798,21 @@
         var(--vs-editor-stack-offset);
 }
 
+/* Keep nested bottom-row frames inside their clipping edge. */
+.monaco-workbench.modern-ui.floating-panels
+.part.editor .monaco-grid-branch-node
+> .monaco-split-view2.vertical
+> .monaco-scrollable-element
+> .split-view-container
+> .split-view-view:last-child:not(:first-child)
+> .monaco-grid-branch-node {
+    --vs-editor-frame-bottom-inset:
+        calc(
+            var(--vs-editor-frame-reservation) +
+            var(--vs-editor-stack-offset)
+        );
+}
+
 .monaco-workbench.modern-ui.floating-panels
 .part.editor .monaco-grid-branch-node
 > .monaco-split-view2.vertical
