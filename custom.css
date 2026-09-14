@@ -234,7 +234,11 @@
     > .split-view-view:first-child
     .editor-group-container > .title
     > .tabs-and-actions-container {
-        padding-left: var(--vs-zero);
+        padding-left:
+            var(
+                --vs-editor-frame-left-inset,
+                var(--vs-zero)
+            );
     }
 
     /* Remove gaps between adjacent tab faces in every state. */
