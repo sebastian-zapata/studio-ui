@@ -21,8 +21,7 @@
     /* Between editors-gap variables */
     --vs-editor-gap-layer:
         calc(var(--vs-editor-outline-layer) - 1);
-    --vs-editor-group-gap:
-        var(--modern-ui-floating-card-margin);
+    --vs-editor-group-gap: 6px;
     --vs-editor-group-half-gap:
         calc(var(--vs-editor-group-gap) / 2);
     --vs-editor-divider-size:
@@ -41,6 +40,35 @@
         var(--vscode-editor-border, var(--vscode-surface-border));
     --vs-tab-bottom-offset:
         calc(var(--vs-zero) - var(--vscode-spacing-size40));
+}
+
+/* Match the Explorer's existing gaps to the editor-group gap. */
+.monaco-workbench.modern-ui.floating-panels
+.part.sidebar {
+    margin-bottom: var(--vs-editor-group-gap);
+}
+
+.monaco-workbench.modern-ui.floating-panels
+.part.editor {
+    margin-left: var(--vs-editor-group-gap);
+}
+
+.monaco-workbench.modern-ui.floating-panels.panel-position-bottom:not(.nopanel):not(.nomaineditorarea)
+.part.panel.bottom {
+    height:
+        calc(
+            100% -
+            var(--vs-editor-group-gap) -
+            var(--modern-ui-floating-card-margin)
+        );
+    margin-top: var(--vs-editor-group-gap);
+    margin-left: var(--vs-editor-group-gap);
+}
+
+/* Match the right sidebar's inner gap to the editor-group gap. */
+.monaco-workbench.modern-ui.floating-panels
+.part.auxiliarybar.right {
+    margin-left: var(--vs-editor-group-gap);
 }
 
 /* Highlight the focused sidebar or panel. */
@@ -223,7 +251,7 @@
         border-bottom: var(--vs-zero) !important;
     }
 
-    /* Remove the outer-left group's native tab-row inset. */
+    /* Align tab rows with their editor-frame left inset. */
     &:not(:has(.monaco-split-view2.horizontal))
     .editor-group-container > .title
     > .tabs-and-actions-container,
@@ -231,7 +259,7 @@
     > .monaco-split-view2.horizontal
     > .monaco-scrollable-element
     > .split-view-container
-    > .split-view-view:first-child
+    > .split-view-view
     .editor-group-container > .title
     > .tabs-and-actions-container {
         padding-left:
