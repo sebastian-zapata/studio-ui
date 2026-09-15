@@ -728,7 +728,11 @@
 > .monaco-scrollable-element
 > :is(.scrollbar.vertical, canvas.decorationsOverviewRuler) {
     translate:
-        calc(var(--vs-zero) - var(--vs-editor-group-half-gap))
+        calc(
+            var(--vs-zero) -
+            var(--vs-editor-group-half-gap) -
+            var(--vs-border-width)
+        )
         var(--vs-zero) !important;
 }
 
@@ -739,6 +743,51 @@
 > .monaco-scrollable-element
 > .scrollbar.horizontal {
     display: none !important;
+}
+
+/* Preserve a 2px gap for horizontal scrollbars at outer-right edges. */
+.monaco-workbench.modern-ui.floating-panels
+.part.editor
+.monaco-scrollable-element.editor-scrollable
+> .scrollbar.horizontal
+> .slider {
+    background: transparent !important;
+}
+
+.monaco-workbench.modern-ui.floating-panels
+.part.editor
+.monaco-scrollable-element.editor-scrollable
+> .scrollbar.horizontal
+> .slider::after {
+    content: "";
+    position: absolute;
+    inset:
+        var(--vs-zero)
+        var(--vs-editor-frame-reservation)
+        var(--vs-zero)
+        var(--vs-zero);
+    pointer-events: none;
+    border-radius: inherit;
+    background-color:
+        var(--vscode-scrollbarSlider-background);
+}
+
+.monaco-workbench.modern-ui.floating-panels
+.part.editor
+.monaco-scrollable-element.editor-scrollable
+> .scrollbar.horizontal
+> .slider:hover::after {
+    background-color:
+        var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+.monaco-workbench.modern-ui.floating-panels
+.part.editor
+.monaco-scrollable-element.editor-scrollable
+> .scrollbar.horizontal
+> .slider.active::after {
+    background-color:
+        var(--vscode-scrollbarSlider-activeBackground);
 }
 
 /* Keep horizontal scrollbar thumbs on the integer pixel grid. */
