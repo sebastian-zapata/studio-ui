@@ -106,7 +106,8 @@
     /* Paint and round each editor's tab-bar surface. */
     & .editor-group-container > .title
     > .tabs-and-actions-container {
-        background-color: var(--vs-editor-background) !important;
+        background-color:
+            var(--vscode-editorGroupHeader-tabsBackground) !important;
         background-image: linear-gradient(
             var(--vs-tab-outline),
             var(--vs-tab-outline)
