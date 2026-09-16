@@ -1,9 +1,42 @@
 {
-    "workbench.experimental.modernUI": true,
-    "vscode_custom_css.imports": [
-        "file://${userHome}/.config/Code/User/custom.css"
-    ],
-    "editor.minimap.enabled": false,
-    "security.workspace.trust.untrustedFiles": "open",
-    "extensions.ignoreRecommendations": true
+	"workbench.experimental.modernUI": true,
+	"vscode_custom_css.imports": [
+		"file://${userHome}/.config/Code/User/custom.css"
+	],
+	"editor.minimap.enabled": false,
+	/*
+	 * Exact visible distance, in pixels, from the right side of the
+	 * line numbers to the first code character. The gutter rules in
+	 * custom.css normalize Monaco's layout around this value.
+	 * Change this value to adjust that distance; do not change the
+	 * corresponding geometry in custom.css.
+	 */
+	"editor.lineDecorationsWidth": 28,
+	"security.workspace.trust.untrustedFiles": "open",
+	"extensions.ignoreRecommendations": true,
+	"workbench.editor.wrapTabs": true,
+	"workbench.colorCustomizations": {
+		"editor.background": "#232221",
+		"editorGutter.background": "#232221",
+		"breadcrumb.background": "#282828",
+		"editorGroupHeader.tabsBackground": "#262626",
+		"tab.activeBackground": "#282828",
+		"tab.unfocusedActiveBackground": "#282828",
+		"tab.inactiveBackground": "#00000000",
+		"tab.unfocusedInactiveBackground": "#00000000",
+		"tab.hoverBackground": "#333333",
+		"tab.unfocusedHoverBackground": "#333333",
+		"tab.activeForeground": "#ffffff",
+		"tab.unfocusedActiveForeground": "#ffffff",
+		"tab.inactiveForeground": "#d7d7d7",
+		"tab.unfocusedInactiveForeground": "#d7d7d7",
+		"titleBar.activeBackground": "#1c1c1c",
+		"titleBar.inactiveBackground": "#1c1c1c",
+		"activityBar.background": "#1c1c1c",
+		"statusBar.background": "#1c1c1c",
+		"sideBar.background": "#282828",
+		"panel.background": "#282828",
+		"surface.border": "#454545",
+		"terminal.background": "#282828"
+	}
 }
