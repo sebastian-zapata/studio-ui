@@ -1041,6 +1041,75 @@
 
 /****************************************************************************
 **
+**                            Text Editor
+**
+*****************************************************************************/
+
+/* Shared values: customize only here. */
+/*
+ * The visible right edge of the line numbers is positioned at 59px:
+ *
+ *     28px breakpoint column
+ *   + 36px line-number column
+ *   -  5px line-number right inset
+ *   = 59px
+ *
+ * Monaco positions the first code character at 59px plus
+ * editor.lineDecorationsWidth. Therefore, that setting directly
+ * controls the visible number-to-code distance.
+ */
+.monaco-editor {
+	--vs-breakpoint-column-width: 28px;
+	--vs-line-number-column-width: 36px;
+	--vs-line-number-right-inset: 5px;
+	--vs-breakpoint-column-background: #1e1e1e;
+}
+
+/* Give the breakpoint column its own background. */
+.monaco-editor .glyph-margin {
+	width: var(--vs-breakpoint-column-width) !important;
+	background-color:
+		var(--vs-breakpoint-column-background) !important;
+}
+
+.monaco-editor .margin {
+	z-index: 2;
+	overflow: visible !important;
+	contain: layout size style !important;
+}
+
+.monaco-editor .glyph-margin-widgets,
+.monaco-editor .glyph-margin-widgets > div {
+	width: var(--vs-breakpoint-column-width) !important;
+}
+
+/* Keep the line-number column at its intended visible width. */
+.monaco-editor .margin-view-overlays .line-numbers {
+	box-sizing: border-box;
+	left: var(--vs-breakpoint-column-width) !important;
+	width: var(--vs-line-number-column-width) !important;
+	min-width: var(--vs-line-number-column-width) !important;
+	padding-right: var(--vs-line-number-right-inset) !important;
+}
+
+/* Use Monaco's remaining gutter width for the number-to-code gap. */
+.monaco-editor .margin-view-overlays .cldr {
+	right: 0 !important;
+	left:
+		calc(
+			var(--vs-breakpoint-column-width) +
+			var(--vs-line-number-column-width)
+		)
+		!important;
+	width: auto !important;
+}
+
+.monaco-editor .margin-view-overlays .current-line-margin {
+	width: 100% !important;
+}
+
+/****************************************************************************
+**
 **                      Other content below this
 **
 *****************************************************************************/
