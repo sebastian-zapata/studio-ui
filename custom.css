@@ -1046,22 +1046,10 @@
 *****************************************************************************/
 
 /* Shared values: customize only here. */
-/*
- * The visible right edge of the line numbers is positioned at 59px:
- *
- *     28px breakpoint column
- *   + 36px line-number column
- *   -  5px line-number right inset
- *   = 59px
- *
- * Monaco positions the first code character at 59px plus
- * editor.lineDecorationsWidth. Therefore, that setting directly
- * controls the visible number-to-code distance.
- */
+/* Reserve exactly three editor-font characters for line numbers. */
 .monaco-editor {
 	--vs-breakpoint-column-width: 28px;
-	--vs-line-number-column-width: 36px;
-	--vs-line-number-right-inset: 5px;
+	--vs-line-number-column-width: 3ch;
 	--vs-breakpoint-column-background: #1e1e1e;
 }
 
@@ -1083,13 +1071,12 @@
 	width: var(--vs-breakpoint-column-width) !important;
 }
 
-/* Keep the line-number column at its intended visible width. */
+/* Keep the line-number column exactly three characters wide. */
 .monaco-editor .margin-view-overlays .line-numbers {
 	box-sizing: border-box;
 	left: var(--vs-breakpoint-column-width) !important;
 	width: var(--vs-line-number-column-width) !important;
 	min-width: var(--vs-line-number-column-width) !important;
-	padding-right: var(--vs-line-number-right-inset) !important;
 }
 
 /* Use Monaco's remaining gutter width for the number-to-code gap. */
