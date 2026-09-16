@@ -1050,6 +1050,9 @@
 .monaco-editor {
 	--vs-breakpoint-column-width: 28px;
 	--vs-line-number-column-width: 3ch;
+	--vs-source-control-marker-width: 3px;
+	--vs-source-control-marker-folding-gap:
+		var(--vscode-strokeThickness);
 	--vs-breakpoint-column-background: #1e1e1e;
 }
 
@@ -1071,24 +1074,60 @@
 	width: var(--vs-breakpoint-column-width) !important;
 }
 
-/* Keep the line-number column exactly three characters wide. */
+/*
+ * Reserve at least three characters while allowing Monaco to
+ * expand the column automatically for larger line numbers.
+ */
 .monaco-editor .margin-view-overlays .line-numbers {
 	box-sizing: border-box;
-	left: var(--vs-breakpoint-column-width) !important;
-	width: var(--vs-line-number-column-width) !important;
 	min-width: var(--vs-line-number-column-width) !important;
+	translate:
+		calc(
+			var(--vs-breakpoint-column-width) - 1lh
+		)
+		0
+		!important;
 }
 
-/* Use Monaco's remaining gutter width for the number-to-code gap. */
+/*
+ * Preserve Monaco's dynamic decoration layout while accounting
+ * for the customized breakpoint-column width.
+ */
 .monaco-editor .margin-view-overlays .cldr {
-	right: 0 !important;
-	left:
+	translate:
 		calc(
-			var(--vs-breakpoint-column-width) +
-			var(--vs-line-number-column-width)
+			var(--vs-breakpoint-column-width) - 1lh
 		)
+		0
 		!important;
-	width: auto !important;
+}
+
+/* Share the source-control marker width with folding controls. */
+.monaco-editor .margin-view-overlays
+.cldr.dirty-diff-glyph {
+	border-left-width:
+		var(--vs-source-control-marker-width) !important;
+}
+
+/* Place folding controls directly after source-control markers. */
+.monaco-editor .margin-view-overlays
+.cldr:is(
+	.codicon-folding-expanded,
+	.codicon-folding-collapsed,
+	.codicon-folding-manual-expanded,
+	.codicon-folding-manual-collapsed
+) {
+	translate:
+		calc(
+			var(--vs-breakpoint-column-width) -
+			1lh -
+			50% +
+			0.5em +
+			var(--vs-source-control-marker-width) +
+			var(--vs-source-control-marker-folding-gap)
+		)
+		0
+		!important;
 }
 
 .monaco-editor .margin-view-overlays .current-line-margin {
