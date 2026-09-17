@@ -1111,6 +1111,32 @@ body:focus-within
 	--vs-source-control-marker-folding-gap:
 		var(--vscode-strokeThickness);
 	--vs-breakpoint-column-background: #1e1e1e;
+	
+  --vs-line-length-guide-dash: 2px;
+  --vs-line-length-guide-gap: 2px;
+}
+
+/* Render the line-length guide as a dashed Visual Studio ruler. */
+.monaco-editor .view-ruler {
+	box-shadow: none !important;
+	background-image:
+		linear-gradient(
+			to bottom,
+			var(--vscode-editorRuler-foreground)
+				var(--vs-line-length-guide-dash),
+			transparent
+				var(--vs-line-length-guide-dash)
+		)
+		!important;
+	background-position: left top !important;
+	background-size:
+		var(--vscode-strokeThickness)
+		calc(
+			var(--vs-line-length-guide-dash) +
+			var(--vs-line-length-guide-gap)
+		)
+		!important;
+	background-repeat: repeat-y !important;
 }
 
 /* Give the breakpoint column its own background. */
