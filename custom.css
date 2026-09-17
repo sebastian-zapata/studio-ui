@@ -4,9 +4,24 @@
 **
 *****************************************************************************/
 
+/*
+ * Make the editor-frame color transitionable so its focused value
+ * can be retained while the application window is inactive.
+ */
+@property --vs-tab-outline {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: transparent;
+}
+
 /* Shared values: customize only here. */
 .monaco-workbench.modern-ui {
     --vs-focused-border: #9184ee;
+    /*
+     * Effectively indefinite delay used to retain the focus color
+     * while the application window is inactive.
+     */
+    --vs-focus-retention-delay: 999999999s;
     --vs-tab-radius: 5px;
     --vscode-cornerRadius-large: var(--vs-tab-radius);
     --vs-zero: 0px;
@@ -75,6 +90,47 @@
 .monaco-workbench.modern-ui.floating-panels
 .part:is(.sidebar, .panel, .auxiliarybar):focus-within {
     border-color: var(--vs-focused-border) !important;
+}
+
+/*
+ * Retain the actual focused card's border color while the
+ * application window is inactive.
+ */
+body:not(:focus-within)
+.monaco-workbench.modern-ui.floating-panels
+.part:is(.sidebar, .panel, .auxiliarybar) {
+    transition-property:
+        border-top-color,
+        border-right-color,
+        border-bottom-color,
+        border-left-color
+        !important;
+    transition-duration: 0s !important;
+    transition-delay:
+        var(--vs-focus-retention-delay) !important;
+}
+
+/*
+ * Retain the actual focused editor frame while the application
+ * window is inactive.
+ */
+body:not(:focus-within)
+.monaco-workbench.modern-ui.floating-panels
+.part.editor .editor-group-container {
+    transition-property: --vs-tab-outline !important;
+    transition-duration: 0s !important;
+    transition-delay:
+        var(--vs-focus-retention-delay) !important;
+}
+
+/* Clear retained focus colors when the window becomes active again. */
+body:focus-within
+.monaco-workbench.modern-ui.floating-panels
+.part:is(.sidebar, .panel, .auxiliarybar),
+body:focus-within
+.monaco-workbench.modern-ui.floating-panels
+.part.editor .editor-group-container {
+    transition: none !important;
 }
 
 /* Match active tabs to the editor, including hover and tab actions. */
