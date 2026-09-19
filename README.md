@@ -44,6 +44,7 @@ automatically as an extension dependency. Studio UI then:
 1. Registers its bundled `custom.css`.
 2. Applies its VS Code configuration defaults.
 3. Invokes the loader to inject the CSS into the workbench.
+3. Invokes the loader to inject the CSS and JavaScript into the workbench.
 
 When prompted, click **Restart Visual Studio Code**. This restart is required
 before the CSS can appear because the current workbench has already loaded.
