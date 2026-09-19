@@ -45,7 +45,7 @@ The required [Custom CSS and JS Loader][custom-css-loader] is installed
 automatically as an extension dependency. Studio UI then:
 
 1. Registers its bundled `custom.css`.
-2. Applies its VS Code configuration defaults.
+2. Provides VS Code defaults for its colors, fonts, layout, and editor behavior.
 3. Invokes the loader to inject the CSS and JavaScript into the workbench.
 
 When prompted, click **Restart Visual Studio Code**. This restart is required
