@@ -16,7 +16,7 @@ subconsciously familiar, reducing the cognitive effort required to quickly
 identify UI elements and adapt to behaviors that differ significantly from
 Visual Studio.
 
-![VS2026 for VS Code](media/screenshot.png)
+![Studio UI](media/screenshot.png)
 
 ## Features
 
