@@ -64,15 +64,16 @@ this extension’s defaults.
 
 ## Compatibility
 
-VS2026 for VS Code requires VS Code 1.135.0 or later. It was developed and
-tested primarily on Zorin OS Linux. Its custom CSS and JavaScript depend on
-internal VS Code workbench structure and may require updates when that
-structure changes.
+Studio UI 0.1.0 requires VS Code 1.137.x. It was developed and tested primarily
+on Zorin OS Linux and Windows 10/11. Its custom CSS and JavaScript depend on
+internal VS Code workbench structure and may require updates when that structure
+changes.
 
 ## Removal
 
-Before uninstalling VS2026 for VS Code, run **Disable Custom CSS and JS** from
-the Command Palette and restart VS Code.
+Before uninstalling Studio UI, open the Command Palette (`Ctrl+Shift+P` on
+Windows/Linux or `Cmd+Shift+P` on macOS), run **Disable Custom CSS and JS**,
+and restart VS Code.
 
 ## Disclaimer
 
