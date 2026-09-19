@@ -29,6 +29,9 @@ Visual Studio.
   derivative tuned to closely match Visual Studio 2026 on Linux systems
 * FreeType tuning for Visual Studio-like text rendering on Linux
 * C++ syntax-color customizations
+* Wrapped editor tabs by default
+* Disabled minimap by default
+* 80-column editor ruler by default
 
 The customization consists of VS Code settings, a custom coding font, and
 custom CSS and JavaScript loaded through
