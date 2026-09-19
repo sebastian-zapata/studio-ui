@@ -36,18 +36,19 @@ custom CSS and JavaScript loaded through
 
 ## Installation
 
-Install **VS2026 for VS Code** from the Visual Studio Marketplace.
+Install **Studio UI** from the Visual Studio Marketplace.
 
-The required [Custom CSS and JS Loader][custom-css-loader] is installed as an
-extension dependency. VS2026 then automatically:
+The required [Custom CSS and JS Loader][custom-css-loader] is installed
+automatically as an extension dependency. Studio UI then:
 
-1. Loads its bundled font inside VS Code.
-2. Configures its bundled CSS and JavaScript.
-3. Applies its colors, fonts, layout, and editor defaults.
-4. Invokes the loader and requests a restart when required.
+1. Registers its bundled `custom.css`.
+2. Applies its VS Code configuration defaults.
+3. Invokes the loader to inject the CSS into the workbench.
 
-No manual file copying, font installation, or `settings.json` editing is
-required.
+When prompted, click **Restart Visual Studio Code**. This restart is required
+before the CSS can appear because the current workbench has already loaded.
+
+No manual CSS copying or `settings.json` editing is required.
 
 The loader must be able to modify the VS Code installation. On Windows,
 applying the customization may require starting VS Code as an administrator.
