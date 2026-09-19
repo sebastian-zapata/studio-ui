@@ -1,4 +1,4 @@
-# Visual Studio 2026-inspired UX for VS Code
+# Studio UI
 
 > [!WARNING]
 > Work in progress repo, do NOT use yet!
