@@ -2,4 +2,5 @@
 .git/**
 .gitignore
 scripts/**
+settings.json
 *.vsix
